@@ -26,5 +26,6 @@ $connect->close();
 </head>
 <body>
     <a href="/creat_task.php">Создать проект</a>
+    <a href="/index.php">Выход</a>
 </body>
 </html>

@@ -27,11 +27,13 @@ $connect->close();
 <body>
 <div class="task">
         <h1>Создание задания</h1>
-        <form action="work_file/add_task.php" method="POST">
+        <form action="work_file/add_task.php" method="POST" enctype="multipart/form-data">
             <div class="input_task">
                 <input type="text" placeholder="Название" name="add_title" class="form-input">
                 <br>
                 <input type="text" placeholder="Задания" name="add_task" class="form-input">
+                <br>
+                <input type="file" name="add_file">
             </div>
             <br>
             <input type="submit" vlaue="ОК" class="send_task" name="submit">
