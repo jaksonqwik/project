@@ -1,0 +1,16 @@
+<br />
+<b>Warning</b>:  Trying to access array offset on value of type null in <b>D:\OSPanel\domains\project\download.php</b> on line <b>24</b><br />
+<br />
+<b>Warning</b>:  Trying to access array offset on value of type null in <b>D:\OSPanel\domains\project\download.php</b> on line <b>25</b><br />
+<br />
+<b>Warning</b>:  Trying to access array offset on value of type null in <b>D:\OSPanel\domains\project\download.php</b> on line <b>26</b><br />
+<br />
+<b>Warning</b>:  Trying to access array offset on value of type null in <b>D:\OSPanel\domains\project\download.php</b> on line <b>29</b><br />
+<br />
+<b>Warning</b>:  Undefined variable $conn in <b>D:\OSPanel\domains\project\download.php</b> on line <b>32</b><br />
+<br />
+<b>Fatal error</b>:  Uncaught TypeError: mysqli_close(): Argument #1 ($mysql) must be of type mysqli, null given in D:\OSPanel\domains\project\download.php:32
+Stack trace:
+#0 D:\OSPanel\domains\project\download.php(32): mysqli_close()
+#1 {main}
+  thrown in <b>D:\OSPanel\domains\project\download.php</b> on line <b>32</b><br />

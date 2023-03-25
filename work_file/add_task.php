@@ -17,7 +17,7 @@ $title = $_POST['add_title'];
 $text_task = $_POST['add_task'];
 
 $res = mysqli_query($connect, "INSERT INTO `task` (`titel`, `text_task`, `file`) VALUES ('$title', '$text_task', '$path')");
-header("Location: ../title.php");
+header("Location: /work_file/task.php");
 
 $connect -> close();
 
