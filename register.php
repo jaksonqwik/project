@@ -11,11 +11,12 @@ require_once "db.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Регистрация</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Register</title>
 </head>
 <body>
     <div class="form">
-        <h1>Регистрация</h1>
+        <h1>Register</h1>
         <form action="work_file/add_reg.php" method="POST">
             <div class="top">
                 <input type="email" placeholder="Email" name="reg_email" class="form-input">
@@ -23,11 +24,11 @@ require_once "db.php";
                 <input type="password" placeholder="Password" name="reg_pass" class="form-input">
             </div>
             <br>
-            <input type="submit" vlaue="ОК" class="register" name="reg_submit">
+            <input type="submit" value="Send" class="register" name="reg_submit">
             <div class="acc">
-                Есть аккаунт?
+                Got an account?
                 <br>
-                <a href="index.php">Авторизация</a>
+                <a href="index.php">Log in</a>
             </div>
         </form>
     </div>

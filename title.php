@@ -21,11 +21,15 @@ $connect->close();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Главная</title>
+    <link rel="stylesheet" href="/style/title.css">
+    <title>Title</title>
 </head>
 <body>
-    <a href="/creat_task.php">Создать проект</a>
-    <a href="/index.php">Выход</a>
-    <a href="/task.php">Задания</a>
+    <div class="title">
+        <h1>Welcome</h1>
+        <a href="/creat_task.php">Creat project</a>
+        <a href="/index.php">Exit</a>
+        <a href="/task.php">Task</a>
+    </div>
 </body>
 </html>

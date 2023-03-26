@@ -23,13 +23,22 @@ $connect->close();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Задания</title>
+    <link rel="stylesheet" href="/style/task.css">
+    <title>Task</title>
 </head>
 <body>
-    <a href="/creat_task.php">Создать проект</a>
-    <a href="/index.php">Выход</a>
+    <div class="header__content">
+        <ul class="header__lists">
+            <li>
+                <a href="/creat_task.php">Creating a task</a>
+            </li>
+            <li>
+                <a href="/index.php">Exit</a>
+            </li>
+        </ul>
+    </div>
     <form action="" method="POST">
-        <div>
+        <div class="task">
             <?php
                 foreach ($user as $row) {
                     if (!isset($_POST['button']) && !isset($_POST['succesfull'])) {
@@ -37,21 +46,21 @@ $connect->close();
                     } else {
                         $new_status = $row['status']; 
                         if (isset($_POST['button']) && isset($_POST['task_id']) && $_POST['task_id'] == $row['id']) {
-                            $new_status = "В роботе";
+                            $new_status = "At work";
                         } elseif (isset($_POST['succesfull']) && isset($_POST['task_id']) && $_POST['task_id'] == $row['id']) {
-                            $new_status = "Выполнено";
+                            $new_status = "Completed";
                         }
                         echo "<p>" . $new_status . "</p>";
                     }
                     echo "<p>" . $row['titel'] . "</p>";
                     echo "<p>" . $row['text_task'] . "</p>";
                     if (!empty($row['file'])) {
-                        echo '<a href="' . $row['file'] . '">Скачать файл</a>';
+                        echo '<a href="' . $row['file'] . '">Download file</a>';
                     }
                     echo '<form action="" method="POST">';
                     echo '<input type="hidden" name="task_id" value="' . $row['id'] . '">';
-                    echo '<input type="submit" name="button" value="Принять">';
-                    echo '<input type="submit" name="succesfull" value="Выполнил">';
+                    echo '<input type="submit" name="button" value="Adopt">';
+                    echo '<input type="submit" name="succesfull" value="Completed">';
                     echo '</form>';
                 }
             ?>
