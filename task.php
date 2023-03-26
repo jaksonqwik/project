@@ -11,9 +11,28 @@ $user = array();
 while ($row = $res->fetch_assoc()) {
     $user[] = $row;
 }
-$connect->close();
 
+if (isset($_POST['adopt']) || isset($_POST['succesfull'])) {
+    $task_id = $_POST['task_id'];
+    $new_status = "";
+    if (isset($_POST['adopt'])) {
+        $new_status = "At work";
+    } elseif (isset($_POST['succesfull'])) {
+        $new_status = "Completed";
+    }
+    $update_sql = "UPDATE `task` SET `status`='$new_status' WHERE `id`='$task_id'";
+    if ($connect->query($update_sql) === TRUE) {
+        $user = array();
+        $res = $connect->query($sql);
+        while ($row = $res->fetch_assoc()) {
+            $user[] = $row;
+        }
+    } else {
+        echo "Error updating record: " . $connect->error;
+    }
+}
 ?>
+
 
 
 <!DOCTYPE html>
@@ -41,11 +60,11 @@ $connect->close();
         <div class="task">
             <?php
                 foreach ($user as $row) {
-                    if (!isset($_POST['button']) && !isset($_POST['succesfull'])) {
+                    if (!isset($_POST['adopt']) && !isset($_POST['succesfull'])) {
                         echo "<p name='status'>" . $row['status'] . "</p>";
                     } else {
                         $new_status = $row['status']; 
-                        if (isset($_POST['button']) && isset($_POST['task_id']) && $_POST['task_id'] == $row['id']) {
+                        if (isset($_POST['adopt']) && isset($_POST['task_id']) && $_POST['task_id'] == $row['id']) {
                             $new_status = "At work";
                         } elseif (isset($_POST['succesfull']) && isset($_POST['task_id']) && $_POST['task_id'] == $row['id']) {
                             $new_status = "Completed";
@@ -59,7 +78,7 @@ $connect->close();
                     }
                     echo '<form action="" method="POST">';
                     echo '<input type="hidden" name="task_id" value="' . $row['id'] . '">';
-                    echo '<input type="submit" name="button" value="Adopt">';
+                    echo '<input type="submit" name="adopt" value="Adopt">';
                     echo '<input type="submit" name="succesfull" value="Completed">';
                     echo '</form>';
                 }
