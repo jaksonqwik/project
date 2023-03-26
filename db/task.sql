@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 26 2023 г., 20:19
+-- Время создания: Мар 27 2023 г., 00:03
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.0.22
 
@@ -32,7 +32,8 @@ CREATE TABLE `task` (
   `titel` varchar(255) NOT NULL,
   `text_task` text NOT NULL,
   `file` varchar(255) NOT NULL,
-  `status` varchar(50) NOT NULL DEFAULT 'new'
+  `status` varchar(50) NOT NULL DEFAULT 'new',
+  `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
@@ -53,7 +54,7 @@ ALTER TABLE `task`
 -- AUTO_INCREMENT для таблицы `task`
 --
 ALTER TABLE `task`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
