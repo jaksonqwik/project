@@ -1,4 +1,5 @@
 <?php
+require_once("user_db.php");
 $host = 'localhost'; 
 $dbname = 'user'; 
 $user = 'root'; 
@@ -15,12 +16,15 @@ while ($row = $res->fetch_assoc()) {
 if (isset($_POST['adopt']) || isset($_POST['succesfull'])) {
     $task_id = $_POST['task_id'];
     $new_status = "";
+    $email = "";
     if (isset($_POST['adopt'])) {
         $new_status = "At work";
+        $email = $_SESSION['user']['email'];
     } elseif (isset($_POST['succesfull'])) {
         $new_status = "Completed";
+        $email = $_SESSION['user']['email'];
     }
-    $update_sql = "UPDATE `task` SET `status`='$new_status' WHERE `id`='$task_id'";
+    $update_sql = "UPDATE `task` SET `status`='$new_status', `email`='$email' WHERE `id`='$task_id'";
     if ($connect->query($update_sql) === TRUE) {
         $user = array();
         $res = $connect->query($sql);
@@ -61,22 +65,28 @@ if (isset($_POST['adopt']) || isset($_POST['succesfull'])) {
         <div class="task">
             <?php
                 foreach ($user as $row) {
-                    if (!isset($_POST['adopt']) && !isset($_POST['succesfull'])) {
-                        echo "<p name='status' class='status'>" . $row['status'] . "</p>";
-                    } else {
-                        $new_status = $row['status']; 
-                        if (isset($_POST['adopt']) && isset($_POST['task_id']) && $_POST['task_id'] == $row['id']) {
-                            $new_status = "At work";
-                        } elseif (isset($_POST['succesfull']) && isset($_POST['task_id']) && $_POST['task_id'] == $row['id']) {
-                            $new_status = "Completed";
-                        }
-                        echo "<p class='status'>" . $new_status . "</p>";
-                    }
                     echo "<p>" . $row['titel'] . "</p>";
                     echo "<p>" . $row['text_task'] . "</p>";
+                    if (!isset($_POST['adopt']) && !isset($_POST['succesfull'])) {
+                        echo "<p name='status' class='status'>" . $row['status'] . "</p>";
+                        echo "<p>" . $row['email'] . "</p>";
+                    } else {
+                        $new_status = $row['status'];
+                        $email = $row['email'];
+                        if (isset($_POST['adopt']) && isset($_POST['task_id']) && $_POST['task_id'] == $row['id']) {
+                            $new_status = "At work";
+                            $email = $_SESSION['user']['email'];
+                        } elseif (isset($_POST['succesfull']) && isset($_POST['task_id']) && $_POST['task_id'] == $row['id']) {
+                            $new_status = "Completed";
+                            $email = $_SESSION['user']['email'];
+                        }
+                        echo "<p class='status'>" . $new_status . "</p>";
+                        echo "<p class='link email'>" . $email . "</p>";
+                    }
                     if (!empty($row['file'])) {
                         echo '<a href="' . $row['file'] . '">Download file</a>';
                     }
+                    echo "<br>";
                     echo '<form action="" method="POST">';
                     echo '<input type="hidden" name="task_id" value="' . $row['id'] . '">';
                     echo '<input type="submit" name="adopt" value="Adopt">';
