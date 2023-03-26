@@ -4,8 +4,8 @@
     list-style-type: none;
 }
 
-.header__lists:not(:last-child){
-    margin-right: 10px;
+.header__lists a{
+    margin: 0 10px;
 }
 
 .head_content{
@@ -17,4 +17,8 @@
 .head_content a{
     display:inline-block;
     padding:10px;
+}
+
+.status{
+    transform: translate(100px, 40px);
 }

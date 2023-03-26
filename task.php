@@ -47,6 +47,7 @@ if (isset($_POST['adopt']) || isset($_POST['succesfull'])) {
 </head>
 <body>
     <div class="header__content">
+        <h1>Task</h1>
         <ul class="header__lists">
             <li>
                 <a href="/creat_task.php">Creating a task</a>
@@ -61,7 +62,7 @@ if (isset($_POST['adopt']) || isset($_POST['succesfull'])) {
             <?php
                 foreach ($user as $row) {
                     if (!isset($_POST['adopt']) && !isset($_POST['succesfull'])) {
-                        echo "<p name='status'>" . $row['status'] . "</p>";
+                        echo "<p name='status' class='status'>" . $row['status'] . "</p>";
                     } else {
                         $new_status = $row['status']; 
                         if (isset($_POST['adopt']) && isset($_POST['task_id']) && $_POST['task_id'] == $row['id']) {
@@ -69,7 +70,7 @@ if (isset($_POST['adopt']) || isset($_POST['succesfull'])) {
                         } elseif (isset($_POST['succesfull']) && isset($_POST['task_id']) && $_POST['task_id'] == $row['id']) {
                             $new_status = "Completed";
                         }
-                        echo "<p>" . $new_status . "</p>";
+                        echo "<p class='status'>" . $new_status . "</p>";
                     }
                     echo "<p>" . $row['titel'] . "</p>";
                     echo "<p>" . $row['text_task'] . "</p>";
