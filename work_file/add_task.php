@@ -16,7 +16,7 @@ move_uploaded_file($_FILES['add_file']['tmp_name'], '../' . $path);
 $title = $_POST['add_title'];
 $text_task = $_POST['add_task'];
 
-$res = mysqli_query($connect, "INSERT INTO `task` (`titel`, `text_task`, `file`) VALUES ('$title', '$text_task', '$path')");
+$res = mysqli_query($connect, "INSERT INTO `task` (`titel`, `text_task`, `file`, `email`) VALUES ('$title', '$text_task', '$path', '{$_SESSION['email']}')");
 header("Location: ../task.php");
 
 $connect -> close();
