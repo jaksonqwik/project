@@ -81,8 +81,8 @@ if (isset($_POST['adopt']) || isset($_POST['succesfull'])) {
                             $new_status = "Completed";
                             $email = $_SESSION['user']['email'];
                         }
-                        echo "<p class='status'>" . $new_status . "</p>";
-                        echo "<p class='link email'>" . $email . "</p>";
+                        echo "<p class='show'>" . "Status: " . $new_status . "</p>";
+                        echo "<p class='show'>" . "User: " . $email . "</p>";
                     }
                     if (!empty($row['file'])) {
                         echo '<a href="' . $row['file'] . '">Download file</a>';
@@ -92,6 +92,7 @@ if (isset($_POST['adopt']) || isset($_POST['succesfull'])) {
                     echo '<input type="hidden" name="task_id" value="' . $row['id'] . '">';
                     echo '<input type="submit" name="adopt" value="Adopt">';
                     echo '<input type="submit" name="succesfull" value="Completed">';
+                    echo '<hr>';
                     echo '</form>';
                 }
             ?>

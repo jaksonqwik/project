@@ -28,8 +28,8 @@ $connect->close();
     <div class="title">
         <h1>Welcome</h1>
         <a href="/creat_task.php">Creat project</a>
-        <a href="/index.php">Exit</a>
         <a href="/task.php">Task</a>
+        <a href="/index.php">Exit</a>
     </div>
 </body>
 </html>
